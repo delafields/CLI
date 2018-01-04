@@ -4,13 +4,12 @@ const replace = require('replace-in-file');
 const chalk = require('chalk');
 
 module.exports = {
-	// name of the directory we'll be working in (as this app is global),
-	// not where these files reside
+	// name of working directory (used as default repo name)
 	getCurrentDirectoryBase: function() {
 		return path.basename(process.cwd());
 	},
 
-	// Checks whether a file or directory exists
+	// Checks if we already have a local git repo
 	directoryExists: function(filePath) {
 		try {
 			return fs.statSync(filePath).isDirectory();
@@ -18,7 +17,8 @@ module.exports = {
 			return false;
 		}
 	},
-	// Checks is local file exists (2nd version)
+	// Checks if file exists in working directory (as this is global),
+	// not *this* directory
 	checkLocalExistance: fileToCheck => {
 		const localPath = process.cwd();
 		if (fs.existsSync(`${localPath}/${fileToCheck}`)) {
@@ -28,6 +28,7 @@ module.exports = {
 			return false;
 		}
 	},
+	// Add current year to License
 	formatLicense: () => {
 		const options = {
 			files: './LICENSE.txt',
@@ -43,6 +44,7 @@ module.exports = {
 			}
 		});
 	},
+	// Changes "license" in package.json to the type of license chosen through prompts
 	formatPackageJson: licenseType => {
 		const options = {
 			files: './package.json',

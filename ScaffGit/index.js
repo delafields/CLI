@@ -18,14 +18,45 @@ clear();
 // Checks if current folder isn't already a git repo
 if (files.directoryExists('.git')) {
 	console.log(chalk.yellow('Already a git repository!'));
-	processs.exit();
+	process.exit();
 }
 
 const github = new GitHubApi({
 	version: '3.0.0'
 });
 
-// Prompts user for github credentials
+// Main git logic
+githubAuth((err, authed) => {
+	if (err) {
+		switch (err.code) {
+			case 401:
+				console.log(chalk.red("Couldn't log you in. Please try again."));
+				break;
+			case 422:
+				console.log(chalk.red('You already have an access token'));
+				break;
+		}
+	}
+	if (authed) {
+		console.log(chalk.green('Successfully authenticated!'));
+		createGithubRepo((err, url) => {
+			if (err) {
+				console.error('An error has occured when creating repo', err);
+			}
+			if (url) {
+				setupLocalRepo(url, err => {
+					if (!err) {
+						console.log(chalk.green('All done!'));
+					}
+				});
+			}
+		});
+	}
+});
+
+/********* GITHUB FUNCS/PROMPTS ************/
+
+// Prompts user for github username/password
 function getGithubCredentials(callback) {
 	const questions = [
 		{
@@ -56,7 +87,9 @@ function getGithubCredentials(callback) {
 	inquirer.prompt(questions).then(callback);
 }
 
-// Github oauth token
+// Fetches oauth token from github
+// Stores in /Users/[YOUR-USERNAME]/.config/preferences/ScaffGit.pref
+// If token already exists in config, no need to refetch
 function getGithubToken(callback) {
 	const prefs = new Preferences('ScaffGit');
 
@@ -64,8 +97,7 @@ function getGithubToken(callback) {
 		return callback(null, prefs.github.token);
 	}
 
-	// Fetch token
-	getGithubCredentials(function(credentials) {
+	getGithubCredentials(credentials => {
 		const status = new Spinner('Authenticating you, please wait...');
 		status.start();
 
@@ -81,7 +113,7 @@ function getGithubToken(callback) {
 		github.authorization.create(
 			{
 				scopes: ['user', 'public_repo', 'repo', 'repo:status'],
-				note: 'Scaff: initialize a project & create a remote repo'
+				note: 'ScaffGit: initialize a project & create a remote repo'
 			},
 			function(err, res) {
 				status.stop();
@@ -100,7 +132,8 @@ function getGithubToken(callback) {
 	});
 }
 
-function createRepo(callback) {
+function createGithubRepo(callback) {
+	// Grabs defaults for name and description [<working directory>, null]
 	const argv = require('minimist')(process.argv.slice(2));
 
 	const questions = [
@@ -156,51 +189,58 @@ function createRepo(callback) {
 		}
 	];
 
-	inquirer.prompt(questions).then(function(answers) {
-		const status = new Spinner('Creating respository...');
-		status.start();
+	inquirer
+		.prompt(questions)
+		.then(({ license, templates, lang, name, description, visibility }) => {
+			const status = new Spinner('Creating respository...');
+			status.start();
 
-		if (answers.license) {
-			console.log('Creating License..');
-			createLicense(answers.license);
-		}
-		if (answers.templates.includes('README')) {
-			console.log('Creating README..');
-			createReadMe(answers.readMe);
-		}
-		if (answers.lang) {
-			console.log('Creating gitignore...');
-			createIgnore(answers.lang);
-			if (
-				answers.lang === 'JS' &&
-				files.checkLocalExistance('package.json') &&
-				(answers.license || files.checkLocalExistance('LICENSE.txt'))
-			) {
-				files.formatPackageJson(answers.license);
+			if (license) {
+				console.log('Creating License..');
+				createLicense(license);
 			}
-		}
 
-		const data = {
-			name: answers.name,
-			description: answers.description,
-			private: answers.visibility === 'private'
-		};
-
-		github.repos.create(data, function(err, res) {
-			status.stop();
-			if (err) {
-				return callback(err);
+			if (templates.includes('README')) {
+				console.log('Creating README..');
+				createReadMe();
 			}
-			return callback(null, res.data.ssh_url);
+
+			// If user wants a gitignore, chooses js and already has a package.json,
+			// THEN if choose a license or already have one, update the package.json "license"
+			if (lang) {
+				console.log('Creating gitignore...');
+				createIgnore(lang);
+				if (
+					lang === 'JS' &&
+					files.checkLocalExistance('package.json') &&
+					(license || files.checkLocalExistance('LICENSE.txt'))
+				) {
+					files.formatPackageJson(license);
+				}
+			}
+
+			const data = {
+				name: name,
+				description: description,
+				private: visibility === 'private'
+			};
+
+			github.repos.create(data, function(err, res) {
+				status.stop();
+				if (err) {
+					return callback(err);
+				}
+				return callback(null, res.data.ssh_url);
+			});
 		});
-	});
 }
 
-// Set up the git repo
-function setupRepo(url, callback) {
+// Set up local repo, make initial commit
+function setupLocalRepo(url, callback) {
 	const status = new Spinner('Setting up the repository...');
 	status.start();
 
+	// issue w/ ssh
 	const urlHack = url.replace(/git@github.com:/i, 'https://github.com/');
 
 	git
@@ -215,7 +255,7 @@ function setupRepo(url, callback) {
 		});
 }
 
-// Obtain token and authenticate user
+// Grab token and authenticate
 function githubAuth(callback) {
 	getGithubToken(function(err, token) {
 		if (err) {
@@ -229,35 +269,10 @@ function githubAuth(callback) {
 	});
 }
 
-// Main logic
-githubAuth(function(err, authed) {
-	if (err) {
-		switch (err.code) {
-			case 401:
-				console.log(chalk.red("Couldn't log you in. Please try again."));
-				break;
-			case 422:
-				console.log(chalk.red('You already have an access token'));
-				break;
-		}
-	}
-	if (authed) {
-		console.log(chalk.green('Successfully authenticated!'));
-		createRepo(function(err, url) {
-			if (err) {
-				console.error('An error has occured when creating repo', err);
-			}
-			if (url) {
-				setupRepo(url, function(err) {
-					if (!err) {
-						console.log(chalk.green('All done!'));
-					}
-				});
-			}
-		});
-	}
-});
+/********* GITHUB FUNCS/PROMPTS END ************/
 
+// Checks if the template passed as templateToCheck exists in the templates folder
+// If exists, shell.cp copies and moves the template to the working directory
 function checkTemplateExistance(templateToCheck) {
 	const localPath = process.cwd();
 	const templatePath = `${__dirname}/templates/${templateToCheck}`;
@@ -268,6 +283,10 @@ function checkTemplateExistance(templateToCheck) {
 	}
 }
 
+/********** CREATE FUNCTIONS *************/
+
+// Chooses gitignore for chosen language
+// Renames to .gitignore
 function createIgnore(lang) {
 	const localPath = process.cwd();
 	const ignorePath = `/git_ignore/${lang}.txt`;
@@ -278,6 +297,8 @@ function createIgnore(lang) {
 	}
 }
 
+// Chooses license for chosen license
+// Renames to LICENSE.txt
 function createLicense(licenseType) {
 	const localPath = process.cwd();
 	const licensePath = `licenses/${licenseType}.txt`;
@@ -298,13 +319,12 @@ function createLicense(licenseType) {
 
 function createReadMe() {
 	const localPath = process.cwd();
-	const licensePath = './templates/README.md';
 	if (!files.checkLocalExistance('README.md')) {
 		checkTemplateExistance('README.md');
 	}
 }
 
-/* moved to files
+/* moved to ./files
 function checkLocalExistance(fileToCheck) {
 	const localPath = process.cwd();
 	if (fs.existsSync(`${localPath}/${fileToCheck}`)) {

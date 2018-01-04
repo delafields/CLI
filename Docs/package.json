@@ -1,0 +1,12 @@
+{
+  "name": "Docs",
+  "version": "1.0.0",
+  "description": "Open docs from the command line",
+  "main": "index.js",
+  "author": "delafields",
+  "license": "MIT",
+  "dependencies": {
+    "enquirer": "^1.0.3",
+    "prompt-autocompletion": "^0.1.2"
+  }
+}

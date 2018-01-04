@@ -1,0 +1,18 @@
+{
+	"name": "Scaff",
+	"version": "1.0.0",
+	"main": "index.js",
+	"author": "delafields <badatfun@gmail.com>",
+	"license": "MIT",
+	"bin": {
+		"scaff": "./index.js"
+	},
+	"dependencies": {
+		"chalk": "^2.3.0",
+		"clear": "^0.0.1",
+		"clui": "^0.3.6",
+		"inquirer": "^4.0.2",
+		"replace-in-file": "^3.1.0",
+		"shelljs": "^0.7.8"
+	}
+}

@@ -1,0 +1,23 @@
+{
+	"name": "helpplz",
+	"version": "1.0.0",
+	"description":
+		"Search Stack Overflow, google, or npm, or open docs from the command line",
+	"main": "index.js",
+	"preferGlobal": true,
+	"bin": {
+		"helpplz": "./index.js"
+	},
+	"author": "delafields",
+	"license": "MIT",
+	"dependencies": {
+		"chalk": "^2.3.0",
+		"commander": "^2.12.2",
+		"fuzzy": "^0.1.3",
+		"inquirer": "^4.0.2",
+		"inquirer-autocomplete-prompt": "^0.12.1",
+		"lodash": "^4.17.4",
+		"opn": "^5.1.0",
+		"promise": "^8.0.1"
+	}
+}

@@ -5,6 +5,7 @@ const inquirer = require('inquirer');
 const opn = require('opn');
 const program = require('commander');
 const chalk = require('chalk');
+const docs = require('./lib/docs');
 const {
 	googleSearch,
 	googleSynonyms,
@@ -13,7 +14,7 @@ const {
 	npmSearch,
 	npmSynonyms,
 	searchStates
-} = require('./logic');
+} = require('./lib/helpers');
 
 program
 	.version('0.0.1')
@@ -55,7 +56,7 @@ program
 			])
 			.then(answers => {
 				console.log(JSON.stringify(answers, null, 2));
-				console.log(test[answers.state]);
+				console.log(docs[answers.state]);
 				process.exit();
 			});
 	});

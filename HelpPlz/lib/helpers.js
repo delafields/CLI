@@ -1,5 +1,5 @@
 const opn = require('opn');
-const test = require('./test');
+const docs = require('./docs');
 const _ = require('lodash');
 const fuzzy = require('fuzzy');
 const Promise = require('promise');
@@ -8,7 +8,7 @@ function searchStates(answers, input) {
 	input = input || '';
 	return new Promise(resolve => {
 		setTimeout(() => {
-			const fuzzyResult = fuzzy.filter(input, Object.keys(test));
+			const fuzzyResult = fuzzy.filter(input, Object.keys(docs));
 			resolve(
 				fuzzyResult.map(el => {
 					return el.original;

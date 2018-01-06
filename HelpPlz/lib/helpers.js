@@ -4,6 +4,7 @@ const _ = require('lodash');
 const fuzzy = require('fuzzy');
 const Promise = require('promise');
 
+// Fuzzy autocompleter for docs
 function searchStates(answers, input) {
 	input = input || '';
 	return new Promise(resolve => {
@@ -18,6 +19,7 @@ function searchStates(answers, input) {
 	});
 }
 
+// Takes args, formats & opens a google search
 function googleSearch(searchFor) {
 	const query = searchFor.join('+');
 	const url = `https://www.google.com/search?q=${query}`;
@@ -26,6 +28,7 @@ function googleSearch(searchFor) {
 	process.exit();
 }
 
+// Takes args, formats & opens a stack overflow search
 function stackOverflowSearch(searchFor) {
 	const query = searchFor.join('+');
 	const url = `https://stackoverflow.com/questions/tagged/${query}`;
@@ -34,6 +37,7 @@ function stackOverflowSearch(searchFor) {
 	process.exit();
 }
 
+// Takes args, formats & opens a npm search
 function npmSearch(searchFor) {
 	const query = searchFor.join('%20');
 	const url = `https://www.npmjs.com/search?q=%20${query}&page=1&ranking=optimal`;
@@ -42,6 +46,7 @@ function npmSearch(searchFor) {
 	process.exit();
 }
 
+// Takes args, opens in npm
 function npmPackage(packageName) {
 	const url = `https://www.npmjs.com/package/${packageName}`;
 	opn(url, { app: ['google chrome'] });
@@ -49,6 +54,7 @@ function npmPackage(packageName) {
 	process.exit();
 }
 
+// Various synonyms for the search comand
 const googleSynonyms = ['google', '-g', '-google', '--g', 'goog'];
 
 const stackOverflowSynonyms = [

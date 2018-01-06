@@ -1,11 +1,5 @@
-import base64
-import requests
 import os
-from datetime import datetime
-import webbrowser
 import re
-import pyimgur
-from prompt_toolkit import prompt
 from prompt_toolkit.validation import Validator, ValidationError
 from config import CLIENT_ID, CLIENT_SECRET
 
@@ -15,7 +9,12 @@ class NameValidator(Validator):
         if re.search(r'[\\/:"*?<>|\s]+', document.text) is not None:
             raise ValidationError(
                 message=
-                'Do not include /, \\, :, \", \', *, ?, <, >, |, or whitespace ',
+                'Do not include /, \\, :, \", \', *, ?, <, >, |, or whitespace',
+                cursor_position=len(document.text))
+
+        if os.path.isfile('./{0}.png'.format(document.text)):
+            raise ValidationError(
+                message="file already exists",
                 cursor_position=len(document.text))
 
         if not document.text:

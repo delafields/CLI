@@ -22,6 +22,10 @@ def main():
         '    Open in browser? [y/N] ',
         default='N',
         validator=BrowserValidator())
+    saveFile = prompt(
+        '    Save image in current directory? [y/N] ',
+        default='N',
+        validator=BrowserValidator())
 
     spinner = Halo(
         text='Take a screenshot!',
@@ -61,9 +65,8 @@ def main():
     if openBrowser.lower() == 'y':
         webbrowser.open_new_tab(uploaded_image.link)
 
-    #if saveFile.lower() == 'n':
-    #    os.remove(t)
-    #    print('Deleted File')
+    if saveFile.lower() == 'n':
+        os.remove(t)
 
 
 if __name__ == '__main__':

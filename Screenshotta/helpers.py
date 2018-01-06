@@ -1,52 +1,50 @@
 import os
 import re
 from prompt_toolkit.validation import Validator, ValidationError
-from config import CLIENT_ID, CLIENT_SECRET
 
 
 class NameValidator(Validator):
     def validate(self, document):
-        if re.search(r'[\\/:"*?<>|\s]+', document.text) is not None:
+        text = document.text
+        # ensure some type of input
+        if not text:
+            raise ValidationError(
+                message='Please enter a name', cursor_position=len(text))
+
+        # ensures accepted file characters are used
+        if re.search(r'[\\/:"*?<>|\s]+', text) is not None:
             raise ValidationError(
                 message=
                 'Do not include /, \\, :, \", \', *, ?, <, >, |, or whitespace',
-                cursor_position=len(document.text))
+                cursor_position=len(text))
 
-        if os.path.isfile('./{0}.png'.format(document.text)):
+        # ensures img name doesn't already exist
+        if os.path.isfile('./{0}.png'.format(text)):
             raise ValidationError(
-                message="file already exists",
-                cursor_position=len(document.text))
-
-        if not document.text:
-            raise ValidationError(
-                message='Please enter a name',
-                cursor_position=len(document.text))
+                message="file already exists", cursor_position=len(text))
 
 
 class DescriptionValidator(Validator):
     def validate(self, document):
-        if not document.text:
+        # ensures some type of input
+        text = document.text
+        if not text:
             raise ValidationError(
                 message='Please enter a description',
-                cursor_position=len(document.text))
+                cursor_position=len(text))
 
 
-class BrowserValidator(Validator):
+class YesNoValidator(Validator):
     def validate(self, document):
-        if not document.text:
+        # ensures some type of input
+        text = document.text
+        if not text:
             raise ValidationError(
                 message='Please enter either y or n',
-                cursor_position=len(document.text))
+                cursor_position=len(text))
 
-        if 'n' not in document.text.lower() and 'y' not in document.text.lower(
-        ):
+        # ensures input is either y/Y or n/N
+        if 'n' not in text.lower() and 'y' not in text.lower():
             raise ValidationError(
                 message='Please enter either y or n',
-                cursor_position=len(document.text))
-
-
-#uploadName = prompt('Image name: ', validator=NameValidator())
-#uploadDescription = prompt('Image description: ', validator=DescriptionValidator())
-#openBrowser = prompt('Open in browser? [y/N] ', default='N', validator=BrowserValidator())
-
-#print('openBrowser? ', openBrowser)
+                cursor_position=len(text))

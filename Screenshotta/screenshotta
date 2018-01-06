@@ -4,29 +4,34 @@ import os
 import webbrowser
 import pyimgur
 from prompt_toolkit import prompt
-from helpers import NameValidator, DescriptionValidator, BrowserValidator
+from helpers import NameValidator, DescriptionValidator, YesNoValidator
 from halo import Halo
-from config import CLIENT_ID, CLIENT_SECRET
+from config import CLIENT_ID
 
 
 def main():
     print('\n📷 📸 📷 📸 📷 📸 📷 📸 📷 📸 📷 📸 📷 📸 ')
     print('SCREENSHOTTA')
 
+    ########## PROMPTS ##########
+
+    # Saves file in cd as imageName.png
     imageName = prompt(
         '    Enter a name for the image: ', validator=NameValidator())
+    # For imgur
     imageDescription = prompt(
         '    Enter a description for the image: ',
         validator=DescriptionValidator())
+    # (Opt) Open new image in imgur?
     openBrowser = prompt(
-        '    Open in browser? [y/N] ',
-        default='N',
-        validator=BrowserValidator())
-    saveFile = prompt(
-        '    Save image in current directory? [y/N] ',
-        default='N',
-        validator=BrowserValidator())
+        '    Open in browser? [y/N] ', default='N', validator=YesNoValidator())
+    # (Opt) Delete file?
+    removeFile = prompt(
+        '    Remove image after upload? [Y/n] ',
+        default='Y',
+        validator=YesNoValidator())
 
+    ########## SCREENCAP/SAVE ##########
     spinner = Halo(
         text='Take a screenshot!',
         spinner={
@@ -40,21 +45,21 @@ def main():
         })
     spinner.start()
 
-    t = imageName + '.png'
-
-    os.system('screencapture -i ' + t)
-
-    fileAdd = os.getcwd() + '/' + t
+    # Screencap, save to cd
+    imageName = imageName + '.png'
+    os.system('screencapture -i ' + imageName)
+    fileAdd = os.getcwd() + '/' + imageName
 
     spinner.succeed('File created!')
 
+    ########## UPLOAD TO IMGUR ##########
     spinner2 = Halo(text='Uploading to imgur...', color='yellow')
     spinner2.start()
 
     im = pyimgur.Imgur(CLIENT_ID)
-
     uploaded_image = im.upload_image(fileAdd, title=imageDescription)
     spinner2.succeed('Image successfully uploaded')
+
     print('    URL: {0}'.format(uploaded_image.link))
     print('    Size: {0:.2f}kB'.format(uploaded_image.size / 1024))
     print('    Dimensions: {0}x{1} (px)'.format(uploaded_image.width,
@@ -62,11 +67,12 @@ def main():
 
     print('📷 📸 📷 📸 📷 📸 📷 📸 📷 📸 📷 📸 📷 📸\n')
 
+    ########## OPEN BROWSER/REMOVEFILE ##########
     if openBrowser.lower() == 'y':
         webbrowser.open_new_tab(uploaded_image.link)
 
-    if saveFile.lower() == 'n':
-        os.remove(t)
+    if removeFile.lower() == 'y':
+        os.remove(imageName)
 
 
 if __name__ == '__main__':

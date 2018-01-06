@@ -1,80 +1,38 @@
-# Product Name
+### Screenshotta
 
-> Short blurb about what your product does.
+Screenshots are a pain in the ass.
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
+Normally you:
 
-One to two paragraph statement about your product and what it does.
+1. Screenshot
+2. Either you
+   2a) Move it from the desktop or
+   2b) Go to an image sharing site
+   2c) Upload it to the image sharing site
+   2d) Get the link
+   2e) Use the link
+   2f) Delete the file from desktop
 
-![](header.png)
+With this you
 
-## Installation
+1. Type screenshotta in the terminal
+2. Name the image, give it a description, choose whether or not to open it in the browser, choose whether you want it saved in your current directory
+   and...
 
-OS X & Linux:
+Wham, the image gets uploaded to imgur, you get the link, and the image locally if thats what ya want
 
-```sh
-npm install my-crazy-module --save
-```
+##### Installation
 
-Windows:
+`pip install pyimgur prompt_toolkit halo`
+`touch config.py` (Keep keys private!)
+Register the app on imgur
+In config.py enter CLIENT_ID='<YOUR_CLIENT_ID>'
+Either symlink or add a PATH to the script
 
-```sh
-edit autoexec.bat
-```
+##### Usage
 
-## Usage example
+Type `screenshotta` in the terminal
+Follow the prompts
 
-A few motivating and useful examples of how your product can be used. Spice this up with code blocks and potentially more screenshots.
+Note: Mac only
 
-_For more examples and usage, please refer to the [Wiki][wiki]._
-
-## Development setup
-
-Describe how to install all development dependencies and how to run an automated test-suite of some kind. Potentially do this for multiple platforms.
-
-```sh
-make install
-npm test
-```
-
-## Release History
-
-* 0.2.1
-  * CHANGE: Update docs (module code remains unchanged)
-* 0.2.0
-  * CHANGE: Remove `setDefaultXYZ()`
-  * ADD: Add `init()`
-* 0.1.1
-  * FIX: Crash when calling `baz()` (Thanks @GenerousContributorName!)
-* 0.1.0
-  * The first proper release
-  * CHANGE: Rename `foo()` to `bar()`
-* 0.0.1
-  * Work in progress
-
-## Meta
-
-Your Name – [@YourTwitter](https://twitter.com/delafields) – YourEmail@example.com
-
-Distributed under the MIT license. See `LICENSE.txt` for more information.
-
-[https://github.com/yourname/github-link](https://github.com/dbader/)
-
-## Contributing
-
-1. Fork it (<https://github.com/yourname/yourproject/fork>)
-2. Create your feature branch (`git checkout -b feature/fooBar`)
-3. Commit your changes (`git commit -am 'Add some fooBar'`)
-4. Push to the branch (`git push origin feature/fooBar`)
-5. Create a new Pull Request
-
-<!-- Markdown link & img dfn's -->
-
-[npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/datadog-metrics
-[npm-downloads]: https://img.shields.io/npm/dm/datadog-metrics.svg?style=flat-square
-[travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
-[travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
-[wiki]: https://github.com/yourname/yourproject/wiki

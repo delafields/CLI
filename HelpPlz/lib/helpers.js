@@ -34,10 +34,18 @@ function stackOverflowSearch(searchFor) {
 	process.exit();
 }
 
-function npmSearch(packageName) {
-	const url = `https://www.npmjs.com/package/${packageName}`;
+function npmSearch(searchFor) {
+	const query = searchFor.join('%20');
+	const url = `https://www.npmjs.com/search?q=%20${query}&page=1&ranking=optimal`;
 	opn(url, { app: ['google chrome'] });
 	console.log('NPM search opened');
+	process.exit();
+}
+
+function npmPackage(packageName) {
+	const url = `https://www.npmjs.com/package/${packageName}`;
+	opn(url, { app: ['google chrome'] });
+	console.log('NPM package opened');
 	process.exit();
 }
 
@@ -55,7 +63,16 @@ const stackOverflowSynonyms = [
 	'--stack overflow'
 ];
 
-const npmSynonyms = ['npm', '-npm', '--npm'];
+const npmSearchSynonyms = [
+	'npm',
+	'npm-module',
+	'npm package',
+	'-npm package',
+	'--npm package',
+	'npm -p',
+	'-npm-p',
+	'--npm-p'
+];
 
 module.exports = {
 	googleSearch,
@@ -63,6 +80,7 @@ module.exports = {
 	stackOverflowSearch,
 	stackOverflowSynonyms,
 	npmSearch,
-	npmSynonyms,
+	npmSearchSynonyms,
+	npmPackage,
 	searchStates
 };

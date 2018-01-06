@@ -12,7 +12,8 @@ const {
 	stackOverflowSearch,
 	stackOverflowSynonyms,
 	npmSearch,
-	npmSynonyms,
+	npmSearchSynonyms,
+	npmPackage,
 	searchStates
 } = require('./lib/helpers');
 
@@ -31,9 +32,17 @@ program
 		if (stackOverflowSynonyms.includes(where.toLowerCase())) {
 			stackOverflowSearch(searchFor);
 		}
-		if (npmSynonyms.includes(where.toLowerCase())) {
+		if (npmSearchSynonyms.includes(where.toLowerCase())) {
 			npmSearch(searchFor);
 		}
+	});
+
+program
+	.command('npm-package <packageName>')
+	.alias('npm')
+	.description('Open a npm package in Chrome')
+	.action(packageName => {
+		npmPackage(packageName);
 	});
 
 program
@@ -77,6 +86,14 @@ program.on('--help', () => {
 	);
 	console.log('');
 	console.log(
+		chalk.bold('    npm-package:') +
+			chalk.white.bgBlack(' <packName>') +
+			' is the correct name of an existing package'
+	);
+	console.log(chalk.red.bold('            Ex: helpplz npm chalk'));
+	console.log(chalk.red('        (opens package in npmjs.com)'));
+	console.log('');
+	console.log(
 		chalk.bold('    docs:') +
 			' Opens an autocompleter for various documentations'
 	);
@@ -89,18 +106,3 @@ program.on('--help', () => {
 });
 
 program.parse(process.argv);
-
-/* A MUCH less ugly version of the help output above :D
-console.log('');
-console.log('  Examples:');
-console.log(
-	'    search: <where> is either google, npm, or stack overflow (synonyms included)'
-);
-console.log('            Ex: helpplz search so python strings');
-console.log('        (searches Stack Overflow for python strings)');
-console.log('');
-console.log('    docs: Opens an autocompleter for various documentations');
-console.log('          Best Practice: type a <language> then a <method>');
-console.log('                     ex: Python3 strings');
-console.log('');
-*/

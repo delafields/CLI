@@ -1,16 +1,15 @@
-import base64
-import requests
+#!/usr/bin/env python3
+
 import os
-from datetime import datetime
 import webbrowser
 import pyimgur
 from prompt_toolkit import prompt
-from prompt_toolkit.validation import Validator, ValidationError
 from helpers import NameValidator, DescriptionValidator, BrowserValidator
 from halo import Halo
 from config import CLIENT_ID, CLIENT_SECRET
 
-if __name__ == '__main__':
+
+def main():
     print('\n📷 📸 📷 📸 📷 📸 📷 📸 📷 📸 📷 📸 📷 📸 ')
     print('SCREENSHOTTA')
 
@@ -57,10 +56,15 @@ if __name__ == '__main__':
     print('    Dimensions: {0}x{1} (px)'.format(uploaded_image.width,
                                                 uploaded_image.height))
 
-    #os.remove(t)
-    #print('Deleted File')
-
     print('📷 📸 📷 📸 📷 📸 📷 📸 📷 📸 📷 📸 📷 📸\n')
 
     if openBrowser.lower() == 'y':
         webbrowser.open_new_tab(uploaded_image.link)
+
+    #if saveFile.lower() == 'n':
+    #    os.remove(t)
+    #    print('Deleted File')
+
+
+if __name__ == '__main__':
+    main()

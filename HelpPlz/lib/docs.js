@@ -579,69 +579,239 @@ module.exports = {
 	'Python3 Interactive input':
 		'https://docs.python.org/3/reference/toplevel_components.html#interactive-input',
 	'Python3 Expression input':
-		'https://docs.python.org/3/reference/toplevel_components.html#expression-input'
+		'https://docs.python.org/3/reference/toplevel_components.html#expression-input',
+	//JS 	'JS ': '',
+	'JS Error Reference':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors',
+	'JS Classes':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes',
+	'JS Functions':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions',
+	'JS Statements and Declarations':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements',
+	'JS Infinity':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity',
+	'JS NaN':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN',
+	'JS undefined':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined',
+	'JS null':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null',
+	'JS eval()':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval',
+	'JS isFinite()':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isFinite',
+	'JS isNaN()':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isNaN',
+	'JS parseFloat()':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseFloat',
+	'JS parseInt()':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt',
+	'JS decodeURI()':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/decodeURI',
+	'JS decodeURIComponent()':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent',
+	'JS encodeURI()':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI',
+	'JS encodeURIComponent()':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent',
+	'JS Object':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object',
+	'JS Function':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function',
+	'JS Boolean':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean',
+	'JS Symbol':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol',
+	'JS Error':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error',
+	'JS EvalError':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError',
+	'JS InternalError':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError',
+	'JS RangeError':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError',
+	'JS ReferenceError':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError',
+	'JS SyntaxError':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError',
+	'JS TypeError':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError',
+	'JS URIError':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError',
+	'JS Number':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number',
+	'JS Math':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math',
+	'JS Date':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date',
+	'JS String':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String',
+	'JS RegExp':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp',
+	'JS Array':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array',
+	'JS Int8Array':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array',
+	'JS Uint8Array':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array',
+	'JS Uint8ClampedArray':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray',
+	'JS Int16Array':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array',
+	'JS Uint16Array':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array',
+	'JS Int32Array':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array',
+	'JS Uint32Array':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array',
+	'JS Float32Array':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array',
+	'JS Float64Array':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array',
+	'JS Map':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map',
+	'JS Set':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set',
+	'JS WeakMap':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap',
+	'JS WeakSet':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet',
+	'JS ArrayBuffer':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer',
+	'JS DataView':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView',
+	'JS JSON':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON',
+	'JS Promise':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise',
+	'JS Generator':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator',
+	'JS GeneratorFunction':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction',
+	'JS Reflect':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect',
+	'JS Proxy':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy',
+	'JS Intl (Internationalization)':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl',
+	'JS WebAssembly':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly',
+	'JS arguments':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments',
+	'JS Block - control flow':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/block',
+	'JS break - control flow':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/break',
+	'JS continue - control flow':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/continue',
+	'JS Empty - control flow':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/Empty',
+	'JS if...else - control flow':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else',
+	'JS switch - control flow':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch',
+	'JS throw - control flow':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw',
+	'JS try...catch - control flow':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch',
+	'JS var':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var',
+	'JS let':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let',
+	'JS const':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const',
+	'JS function':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function',
+	'JS function*':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*',
+	'JS async function':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function',
+	'JS return':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return',
+	'JS class':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/class',
+	'JS do...while - iteration':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/do...while',
+	'JS for - iteration':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for',
+	'JS for...in - iteration':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in',
+	'JS for...of - iteration':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of',
+	'JS while - iteration':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/while',
+	'JS debugger':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/debugger',
+	'JS export':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export',
+	'JS import':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import',
+	'JS label':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/label',
+	'JS this':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this',
+	'JS yield':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/yield',
+	'JS yield*':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/yield*',
+	'JS new (constructor)':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new',
+	'JS super':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/super',
+	'JS ...obj (spread)':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator',
+	'JS delete (unary)':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete',
+	'JS void (unary)':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/void',
+	'JS typeof (unary)':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof',
+	'JS ~ (unary)':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators#Bitwise_NOT',
+	'JS + (unary)':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators#Unary_plus',
+	'JS - (unary)':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators#Unary_negation',
+	'JS ! (unary)':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators#Logical_NOT',
+	'JS in (relational)':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/in',
+	'JS instanceof (relational)':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof',
+	'JS == equality':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators#Equality',
+	'JS != inequality':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators#Inequality',
+	'JS === identity':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators#Identity',
+	'JS !== nonidentity':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators#Nonidentity',
+	'JS << bitwise left shift':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators#Left_shift',
+	'JS >> bitwise right shift':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators#Right_shift',
+	'JS >>> bitwise unsigned right shift':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators#Unsigned_right_shift',
+	'JS ? ternary':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator',
+	'JS Assignment operators':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Assignment_Operators#Bitwise_AND_assignment',
+	'JS destructuring assignment':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment',
+	'JS arrow functions':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions',
+	'JS default function parameters':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Default_parameters',
+	'JS function rest parameters':
+		'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters',
+	// FRONT-END TOOLS
+	'WebDev React': 'https://reactjs.org/docs/hello-world.html',
+	'WebDev Redux': 'https://redux.js.org/',
+	'WebDev Vue': 'https://vuejs.org/v2/guide/',
+	'WebDev Preact': 'https://preactjs.com/guide/api-reference',
+	// Test
+	'Test JSFiddle': 'https://jsfiddle.net/',
+	'Test CodePen': 'https://codepen.io/',
+	'Test Repl.it Python3': 'https://repl.it/languages/python3'
 };
-
-/*
-module.exports = {
-	Alabama: 'https://www.google.com',
-	Alaska: 'https://www.google.com',
-	'American Samoa': 'https://www.google.com',
-	Arizona: 'https://www.google.com',
-	Arkansas: 'https://www.google.com',
-	California: 'https://www.google.com',
-	Colorado: 'https://www.google.com',
-	Connecticut: 'https://www.google.com',
-	Delaware: 'https://www.google.com',
-	'District Of Columbia': 'https://www.google.com',
-	'Federated States Of Micronesia': 'https://www.google.com',
-	Florida: 'https://www.google.com',
-	Georgia: 'https://www.google.com',
-	Guam: 'https://www.google.com',
-	Hawaii: 'https://www.google.com',
-	Idaho: 'https://www.google.com',
-	Illinois: 'https://www.google.com',
-	Indiana: 'https://www.google.com',
-	Iowa: 'https://www.google.com',
-	Kansas: 'https://www.google.com',
-	Kentucky: 'https://www.google.com',
-	Louisiana: 'https://www.google.com',
-	Maine: 'https://www.google.com',
-	'Marshall Islands': 'https://www.google.com',
-	Maryland: 'https://www.google.com',
-	Massachusetts: 'https://www.google.com',
-	Michigan: 'https://www.google.com',
-	Minnesota: 'https://www.google.com',
-	Mississippi: 'https://www.google.com',
-	Missouri: 'https://www.google.com',
-	Montana: 'https://www.google.com',
-	Nebraska: 'https://www.google.com',
-	Nevada: 'https://www.google.com',
-	'New Hampshire': 'https://www.google.com',
-	'New Jersey': 'https://www.google.com',
-	'New Mexico': 'https://www.google.com',
-	'New York': 'https://www.google.com',
-	'North Carolina': 'https://www.google.com',
-	'North Dakota': 'https://www.google.com',
-	'Northern Mariana Islands': 'https://www.google.com',
-	Ohio: 'https://www.google.com',
-	Oklahoma: 'https://www.google.com',
-	Oregon: 'https://www.google.com',
-	Palau: 'https://www.google.com',
-	Pennsylvania: 'https://www.google.com',
-	'Puerto Rico': 'https://www.google.com',
-	'Rhode Island': 'https://www.google.com',
-	'South Carolina': 'https://www.google.com',
-	'South Dakota': 'https://www.google.com',
-	Tennessee: 'https://www.google.com',
-	Texas: 'https://www.google.com',
-	Utah: 'https://www.google.com',
-	Vermont: 'https://www.google.com',
-	'Virgin Islands': 'https://www.google.com',
-	Virginia: 'https://www.google.com',
-	Washington: 'https://www.google.com',
-	'West Virginia': 'https://www.google.com',
-	Wisconsin: 'https://www.google.com',
-	Wyoming: 'https://www.google.com'
-};
-*/

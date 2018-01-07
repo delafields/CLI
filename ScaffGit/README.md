@@ -14,6 +14,10 @@ Choose whether to add:
 
 Then enter Github credentials(encrypted & stored locally), name your repo/description, & make first commit!
 
+![Screenshot-terminal](https://i.imgur.com/h4SRkvr.png)
+...and you get:
+![Screenshot-directory](https://i.imgur.com/oFp4hhW.png)
+
 ## Development setup
 
 git clone

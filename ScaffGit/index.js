@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 const chalk = require('chalk');
-const clear = require('clear');
 const CLI = require('clui');
 const Spinner = CLI.Spinner;
 const inquirer = require('inquirer');
@@ -12,8 +11,6 @@ const git = require('simple-git')();
 const fs = require('fs');
 const files = require('./lib/files');
 const shell = require('shelljs');
-
-clear();
 
 // Checks if current folder isn't already a git repo
 if (files.directoryExists('.git')) {
@@ -46,6 +43,11 @@ githubAuth((err, authed) => {
 			if (url) {
 				setupLocalRepo(url, err => {
 					if (!err) {
+						const remote = url.replace(
+							/git@github.com:/i,
+							'https://github.com/'
+						);
+						console.log(chalk.green(`Remote: ${remote}`));
 						console.log(chalk.green('All done!'));
 					}
 				});

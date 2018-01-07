@@ -14,7 +14,7 @@ const {
 	npmSearch,
 	npmSearchSynonyms,
 	npmPackage,
-	searchStates
+	searchDocs
 } = require('./lib/helpers');
 
 program
@@ -67,14 +67,16 @@ program
 			.prompt([
 				{
 					type: 'autocomplete',
-					name: 'state',
-					message: 'Select a state to travel from',
-					source: searchStates
+					name: 'documentName',
+					message: 'Select a doc to open',
+					source: searchDocs
 				}
 			])
-			.then(answers => {
-				console.log(JSON.stringify(answers, null, 2));
-				console.log(docs[answers.state]);
+			.then(({ documentName }) => {
+				console.log(`Opening ${documentName} doc`);
+				// Opens document returned from prompt in chrome
+				opn(docs[documentName], { app: ['google chrome'] });
+				console.log('Doc opened');
 				process.exit();
 			});
 	});

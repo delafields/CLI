@@ -5,7 +5,7 @@ const fuzzy = require('fuzzy');
 const Promise = require('promise');
 
 // Fuzzy autocompleter for docs
-function searchStates(answers, input) {
+function searchDocs(answers, input) {
 	input = input || '';
 	return new Promise(resolve => {
 		setTimeout(() => {
@@ -88,5 +88,5 @@ module.exports = {
 	npmSearch,
 	npmSearchSynonyms,
 	npmPackage,
-	searchStates
+	searchDocs
 };

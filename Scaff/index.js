@@ -3,13 +3,10 @@
 'use strict';
 
 const chalk = require('chalk');
-const clear = require('clear');
 const inquirer = require('inquirer');
 const fs = require('fs');
 const shell = require('shelljs');
 const files = require('./lib/files');
-
-clear();
 
 // Choose lang and what to include
 function start() {

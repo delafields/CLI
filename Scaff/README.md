@@ -12,6 +12,10 @@ Choose whether to add:
 * A .gitignore (templates from [gitignore.io](https://www.gitignore.io/))
   * Current language options: C++, Go, Javascript, Python, Rust
 
+![Screenshot-terminal](https://i.imgur.com/yPhl0MI.png)
+...and you get:
+![Screenshot-directory](https://i.imgur.com/lLIAeuz.png)
+
 ## Development setup
 
 git clone

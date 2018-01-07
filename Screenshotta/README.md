@@ -34,5 +34,6 @@ Either symlink or add a PATH to the script
 Type `screenshotta` in the terminal
 Follow the prompts
 
-Note: Mac only
+![Screenshot](https://i.imgur.com/mnZEVdv.png)
 
+Note: Mac/Linux only
